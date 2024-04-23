@@ -236,8 +236,8 @@ class BoatsController extends Controller
         }
 
         $boat_info = BoatsModel::find($request->input('boat_id'));
-        // $destination_info = DestinationModel::where('boat_id', $request->input('boat_id'))->first();
-        // $papers_info = BoatPapersModel::where('boat_id', $request->input('boat_id'))->first();
+        $destination_info = DestinationModel::where('boat_id', $request->input('boat_id'))->first();
+        $papers_info = BoatPapersModel::where('boat_id', $request->input('boat_id'))->first();
 
         if (!$boat_info) {
             return response([
@@ -251,12 +251,12 @@ class BoatsController extends Controller
             'isActive' => 0
         ]);
 
-        // if ($boat_info->type == 2) {
-            // $destination_info->delete();
-            // $papers_info->delete();
-        // }
+        if ($boat_info->type == 2) {
+            $destination_info->delete();
+            $papers_info->delete();
+        }
 
-        // $boat_info->delete();
+        $boat_info->delete();
 
         return response([
             "status" => "success",
