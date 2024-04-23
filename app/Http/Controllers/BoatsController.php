@@ -247,9 +247,9 @@ class BoatsController extends Controller
             ], 401);
         }
 
-        $boat_info->update([
-            'isActive' => 0
-        ]);
+        // $boat_info->update([
+        //     'isActive' => 0
+        // ]);
 
         if ($boat_info->type == 2) {
             $destination_info->delete();
